@@ -7,21 +7,31 @@
 //
 
 #import "ViewController.h"
+#import "MultiThreadManager.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+- (IBAction)cancelPressed:(id)sender {
+    NSLog(@"cancel pressed");
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate stopSource];
+}
+
+- (IBAction)buttonPressed:(id)sender {
+    NSLog(@"button pressed");
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate pingSource];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
+//    MultiThreadManager *multiThreadManager =[[MultiThreadManager alloc] init];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//    [multiThreadManager createThread];
 }
 
 @end
